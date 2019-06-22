@@ -17,13 +17,25 @@
 
 <script>
 import fscreen from 'fscreen'
-import CardRow from './CardRow.vue'
-import Title from './Title.vue'
+import CardRow from './CardRow'
+import Title from './Title'
+import LineChart from './LineChart'
+import BarChart from './BarChart'
+import PieChart from './PieChart'
+import GlobalMap from './GlobalMap'
+import USMap from './USMap'
+import LeaderBoard from './LeaderBoard'
 
 export default {
 	components: {
 		CardRow,
-		Title
+		Title,
+		LineChart,
+		BarChart,
+		PieChart,
+		GlobalMap,
+		USMap,
+		LeaderBoard
 	},
 	props: {
 		dataArray: {
