@@ -12,7 +12,15 @@ export default {
     VueChartsDashboard
   },
   data: () => ({
-    testDataArray: [],
+	testDataArray: [],
+	testDataEndpoints: [
+		'api/dash_data/NOAA_global_climate_report',
+		'api/dash_data/NOAA_global_climate_report',
+		'api/dash_data/renewableEnergySlimmed',
+		'api/dash_data/renewableEnergySlimmed',
+		'api/dash_data/us_energy_consumption',
+		'api/dash_data/super_heroes'
+	],
     configJSON: [
       {
         type: "Title",
@@ -100,7 +108,15 @@ export default {
         height: "41vh"
       }
     ]
-  })
+  }),
+  mounted () {
+	this.testDataEndpoints.map((endpoint, index) => {
+		this.$axios.get(this.$config.host + endpoint)
+		.then(res => {
+			this.testDataArray[index] = res.data
+		})
+	})
+  }
 }
 </script>
 
