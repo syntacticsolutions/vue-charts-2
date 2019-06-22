@@ -14,7 +14,7 @@ export default {
   data: () => ({
     testDataArray: [],
     configJSON: [{
-        type: 'title',
+        type: 'Title',
         title: 'Simpsons Metrics',
         updated: date,
         parent: false,
