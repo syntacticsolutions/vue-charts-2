@@ -1,12 +1,38 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <VueChartsDashboard :configJSON="configJSON" :dataArray="testDataArray" />
   </div>
 </template>
+
+<script>
+import VueChartsDashboard from '../vue-charts-framework/src/components/VueChartsDashboard'
+
+export default {
+  components: {
+    VueChartsDashboard
+  },
+  data: () => ({
+    testDataArray: [],
+    configJSON: [{
+        type: 'title',
+        title: 'Simpsons Metrics',
+        updated: date,
+        parent: false,
+        description: {
+            title: 'Data Definitions',
+            'Endpoints Purchased': 'Number of seats purchased (Source: Keystone)',
+            'Endpoints Deployed': 'Number of endpoints actively installed (Source: Nebula)',
+            'Deployment %': 'Endpoints Deployed / Endpoints Purchased',
+            'Risk Category': 'Grouped category names based on the calculated risk'
+        },
+        // filters: [{
+        //     type: 'agg',
+        //     multiFilterXVal: { placeholder: 'Aggregation', type: 'date_agg', val: 'Snapshot Date', aggTypes: ['Monthly', 'Daily', 'Weekly'], default: 'Daily' }
+        // }]
+    }]
+  })
+}
+</script>
 
 <style lang="scss">
 #app {
