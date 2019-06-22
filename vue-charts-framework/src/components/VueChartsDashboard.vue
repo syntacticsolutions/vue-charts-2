@@ -18,11 +18,12 @@
 <script>
 import fscreen from 'fscreen'
 import CardRow from './CardRow.vue'
-
+import Title from './Title.vue'
 
 export default {
 	components: {
 		CardRow,
+		Title
 	},
 	props: {
 		dataArray: {
@@ -52,6 +53,26 @@ export default {
                 this.fullscreen = true
                 fscreen.requestFullscreen(this.$el)
             }
+		},
+		exportCSV () {
+            let header = Object.keys(this.dashData[0])
+            let csv = (`"${header.join('","')}"\n`)
+                .concat(
+                    // traverse each row
+                    this.dashData.map(
+                        row =>
+							`"${header.map(
+									key => row[key] ? row[key] : ' '
+							).join('","')} "`
+                    )
+                    .join('\n')
+                )
+            let csvData = new Blob([csv], { type: 'text/csv' })
+            let csvUrl = window.URL.createObjectURL(csvData)
+            let link = document.createElement('a')
+            link.href = csvUrl
+            link.download = 'export.csv'
+            link.click()
         }
 	}
 }

@@ -1,11 +1,12 @@
 <template>
   <div id="app">
-    <VueChartsDashboard :configJSON="configJSON" :dataArray="testDataArray" />
+    <VueChartsDashboard :configJSON="configJSON" :dataArray="testDataArray"/>
+	{{ configJSON }} poop
   </div>
 </template>
 
 <script>
-import VueChartsDashboard from '../vue-charts-framework/src/components/VueChartsDashboard'
+import VueChartsDashboard from "../vue-charts-framework/src/components/VueChartsDashboard"
 
 export default {
   components: {
@@ -13,30 +14,33 @@ export default {
   },
   data: () => ({
     testDataArray: [],
-    configJSON: [{
-        type: 'Title',
-        title: 'Simpsons Metrics',
-        updated: date,
+    configJSON: [
+      {
+        type: "Title",
+        title: "Simpsons Metrics",
+        updated: new Date().toLocaleDateString('en-us'),
         parent: false,
         description: {
-            title: 'Data Definitions',
-            'Endpoints Purchased': 'Number of seats purchased (Source: Keystone)',
-            'Endpoints Deployed': 'Number of endpoints actively installed (Source: Nebula)',
-            'Deployment %': 'Endpoints Deployed / Endpoints Purchased',
-            'Risk Category': 'Grouped category names based on the calculated risk'
-        },
+			title: "Data Definitions",
+			"Endpoints Purchased": "Number of seats purchased (Source: Keystone)",
+			"Endpoints Deployed":
+            "Number of endpoints actively installed (Source: Nebula)",
+			"Deployment %": "Endpoints Deployed / Endpoints Purchased",
+			"Risk Category": "Grouped category names based on the calculated risk"
+        }
         // filters: [{
         //     type: 'agg',
         //     multiFilterXVal: { placeholder: 'Aggregation', type: 'date_agg', val: 'Snapshot Date', aggTypes: ['Monthly', 'Daily', 'Weekly'], default: 'Daily' }
         // }]
-    }]
+      }
+    ]
   })
 }
 </script>
 
 <style lang="scss">
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
