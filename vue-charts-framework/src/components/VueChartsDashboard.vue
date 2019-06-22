@@ -4,6 +4,7 @@
 			v-for="(section, idx) in configJSON"
 			:key="idx">
 			<component
+				v-if="dataArray[idx].length"
 				:is="section.type"
 				:contents="section"
 				:dashData="dataArray[idx]"
